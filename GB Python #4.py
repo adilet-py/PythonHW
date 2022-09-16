@@ -74,24 +74,24 @@
 import random
 
 
-# запись в файл
+#запись в файл
 def write_file(name, st):
     with open(name, 'w') as data:
         data.write(st)
 
 
-# создание случайного числа от 0 до 100
+#создание случайного числа от 0 до 100
 def rnd():
     return random.randint(0, 101)
 
 
-# создание коэффициентов многочлена
+#создание коэффициентов многочлена
 def create_mn(k):
     lst = [rnd() for i in range(k + 1)]
     return lst
 
 
-# создание многочлена в виде строки
+#создание многочлена в виде строки
 def create_str(sp):
     lst = sp[::-1]
     wr = ''
@@ -114,7 +114,7 @@ def create_str(sp):
     return wr
 
 
-# получение степени многочлена
+#получение степени многочлена
 def sq_mn(k):
     if 'x^' in k:
         i = k.find('^')
@@ -126,7 +126,7 @@ def sq_mn(k):
     return num
 
 
-# получение коэффицента члена многочлена
+#получение коэффицента члена многочлена
 def k_mn(k):
     if 'x' in k:
         i = k.find('x')
@@ -134,7 +134,7 @@ def k_mn(k):
     return num
 
 
-# разбор многочлена и получение его коэффициентов
+#разбор многочлена и получение его коэффициентов
 def calc_mn(st):
     st = st[0].replace(' ', '').split('=')
     st = st[0].split('+')
@@ -145,8 +145,8 @@ def calc_mn(st):
         lst.append(int(st[-1]))
         l -= 1
         k = 1
-    i = 1  # степень
-    ii = l - 1  # индекс
+    i = 1  #степень
+    ii = l - 1  #индекс
     while ii >= 0:
         if sq_mn(st[ii]) != -1 and sq_mn(st[ii]) == i:
             lst.append(k_mn(st[ii]))
@@ -159,7 +159,7 @@ def calc_mn(st):
     return lst
 
 
-# создание двух файлов
+#создание двух файлов
 
 k1 = int(input("Введите натуральную степень для первого файла k = "))
 k2 = int(input("Введите натуральную степень для второго файла k = "))
@@ -168,7 +168,7 @@ koef2 = create_mn(k2)
 write_file("file_1.txt", create_str(koef1))
 write_file("file_2.txt", create_str(koef2))
 
-# нахождение суммы многочлена
+#нахождение суммы многочлена
 
 with open('file_1.txt', 'r') as data:
     st1 = data.readlines()
